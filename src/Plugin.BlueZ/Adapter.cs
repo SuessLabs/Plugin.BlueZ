@@ -1,4 +1,4 @@
-using Plugin.BlueZ.Extensions;
+﻿using Plugin.BlueZ.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,6 +15,12 @@ namespace Plugin.BlueZ
   /// </summary>
   public class Adapter : IAdapter1, IDisposable
   {
+    private IAdapter1 m_proxy;
+    private IDisposable m_interfacesWatcher;
+    private IDisposable m_propertyWatcher;
+    private DeviceChangeEventHandlerAsync m_deviceFound;
+    private AdapterEventHandlerAsync m_poweredOn;
+
     ~Adapter()
     {
       Dispose();
@@ -28,7 +34,7 @@ namespace Plugin.BlueZ
       };
 
       var objectManager = Connection.System.CreateProxy<IObjectManager>(BluezConstants.DbusService, "/");
-      adapter.m_interfacesWatcher = await objectManager.WatchInterfacesAddedAsync(adapter.OnDeviceAdded);
+      adapter.m_interfacesWatcher = await objectManager.WatchInterfacesAddedAsync(adapter.OnDeviceAddedAsync);
       adapter.m_propertyWatcher = await proxy.WatchPropertiesAsync(adapter.OnPropertyChanges);
 
       return adapter;
@@ -126,7 +132,7 @@ namespace Plugin.BlueZ
       }
     }
 
-    private async void OnDeviceAdded((ObjectPath objectPath, IDictionary<string, IDictionary<string, object>> interfaces) args)
+    private async void OnDeviceAddedAsync((ObjectPath objectPath, IDictionary<string, IDictionary<string, object>> interfaces) args)
     {
       if (BlueZManager.IsMatch(BluezConstants.DeviceInterface, args.objectPath, args.interfaces, this))
       {
@@ -174,11 +180,5 @@ namespace Plugin.BlueZ
         }
       }
     }
-
-    private IAdapter1 m_proxy;
-    private IDisposable m_interfacesWatcher;
-    private IDisposable m_propertyWatcher;
-    private DeviceChangeEventHandlerAsync m_deviceFound;
-    private AdapterEventHandlerAsync m_poweredOn;
   }
 }
