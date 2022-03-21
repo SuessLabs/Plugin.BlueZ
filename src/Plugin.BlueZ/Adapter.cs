@@ -108,11 +108,15 @@ namespace Plugin.BlueZ
       return m_proxy.SetDiscoveryFilterAsync(Properties);
     }
 
+    /// <summary>Scan for devices nearby.</summary>
+    /// <returns>Task.</returns>
     public Task StartDiscoveryAsync()
     {
       return m_proxy.StartDiscoveryAsync();
     }
 
+    /// <summary>Stop scanning for devices nearby.</summary>
+    /// <returns>Task.</returns>
     public Task StopDiscoveryAsync()
     {
       return m_proxy.StopDiscoveryAsync();
