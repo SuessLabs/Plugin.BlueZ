@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using Tmds.DBus;
 
@@ -100,9 +100,42 @@ namespace Plugin.BlueZ
       return _proxy.DisconnectProfileAsync(UUID);
     }
 
+    /// <summary>Gets all properties in the form of, BlueZ's Device1Properties.</summary>
+    /// <returns>BlueZ <seealso cref="Device1Properties"/>.</returns>
     public Task<Device1Properties> GetAllAsync()
     {
       return _proxy.GetAllAsync();
+    }
+
+    /// <summary>Gets all properties for device.</summary>
+    public async Task<DeviceProperties> GetPropertiesAsync()
+    {
+      var p = await _proxy.GetAllAsync();
+
+      var props = new DeviceProperties
+      {
+        Address = p.Address,
+        AddressType = p.AddressType,
+        Alias = p.Alias,
+        Appearance = p.Appearance,
+        Blocked = p.Blocked,
+        Class = p.Class,
+        Connected = p.Connected,
+        Icon = p.Icon,
+        LegacyPairing = p.LegacyPairing,
+        ManufacturerData = p.ManufacturerData,
+        Modalias = p.Modalias,
+        Name = p.Name,
+        Paired = p.Paired,
+        RSSI = p.RSSI,
+        ServiceData = p.ServiceData,
+        ServicesResolved = p.ServicesResolved,
+        Trusted = p.Trusted,
+        TxPower = p.TxPower,
+        UUIDs = p.UUIDs,
+      };
+
+      return props;
     }
 
     public Task<T> GetAsync<T>(string prop)

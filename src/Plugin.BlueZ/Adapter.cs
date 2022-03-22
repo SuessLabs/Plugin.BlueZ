@@ -78,6 +78,9 @@ namespace Plugin.BlueZ
 
     public ObjectPath ObjectPath => m_proxy.ObjectPath;
 
+    /// <summary>Name of Adapter (i.e. "/org/bluez/hci0").</summary>
+    public string Name => ObjectPath.ToString();
+
     public Task<Adapter1Properties> GetAllAsync()
     {
       return m_proxy.GetAllAsync();
