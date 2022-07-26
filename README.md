@@ -1,19 +1,18 @@
 # Linux Bluetooth with Plugin.BlueZ
 
-A .NET BluetoothLE library for Linux using BlueZ's D-Bus APIs.
+> ## Announcement
+>
+> The project is officially changing names to, [Linux.Bluetooth](https://github.com/SuessLabs/Linux.Bluetooth)!
+>
+> This repository will remain and eventually marked as, _read-only_. Please migrate your project over to the new [NuGet package](https://www.nuget.org/packages/Linux.Bluetooth) to continue getting the latest features and builds.
+>
+> A .NET BluetoothLE library for Linux using BlueZ's D-Bus APIs.
+
+[![Linux.Bluetooth NuGet Badge](https://buildstats.info/nuget/https://www.nuget.org/packages/Linux.Bluetooth?dWidth=70&includePreReleases=true)](https://www.nuget.org/packages/Linux.Bluetooth/)
 
 [![Plugin.BlueZ NuGet Badge](https://buildstats.info/nuget/Plugin.BlueZ?dWidth=70&includePreReleases=true)](https://www.nuget.org/packages/Plugin.BlueZ/)
 
 The library uses, [Tmds.DBus](https://github.com/tmds/Tmds.DBus) to access Linux's D-Bus, the preferred interface for Bluetooth in userspace.
-
-A huge special thanks to the maintainers of Tmds.DBus.
-
-Name Change Candidates:
-
-* Linux.BlueZ
-* Linux.Bluetooth
-* Linux.Dbus.BlueZ
-* Linux.Dbus.Bluetooth
 
 ## Requirements
 
