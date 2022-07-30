@@ -14,6 +14,8 @@
 
 The library uses, [Tmds.DBus](https://github.com/tmds/Tmds.DBus) to access Linux's D-Bus, the preferred interface for Bluetooth in userspace.
 
+Check out the SuessLabs article on using [Plugin.BlueZ](https://suesslabs.com/csharp/net-and-linux-bluetooth/)
+
 ## Requirements
 
 * Linux
