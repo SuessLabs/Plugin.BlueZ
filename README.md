@@ -27,8 +27,9 @@ Plugin.BlueZ aims to support Linux Distributions where both .NET and BlueZ is su
 
 List of [BlueZ supported](http://www.bluez.org/about/) distros:
 
-* Debian GNU/Linux
 * Ubuntu Linux
+* Raspbian (_Raspberry PI_)
+* Debian GNU/Linux
 * Fedora Core / Red Hat Linux
 * OpenSuSE / SuSE Linux
 * Mandrake Linux
