@@ -11,6 +11,12 @@ namespace Plugin.BlueZ.Tests
   /// </remarks>
   public static class Helpers
   {
+    ////public static T GetPropertyValue<T>(this object obj, string name)
+    ////{
+    ////  object? result = obj.GetType().GetProperty(name)?.GetValue(obj);
+    ////  return (T)result;
+    ////}
+
     public static object GetPropValue(this object obj, string name)
     {
       foreach (string part in name.Split('.'))

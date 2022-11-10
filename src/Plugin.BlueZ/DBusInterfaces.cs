@@ -1010,6 +1010,114 @@ namespace Plugin.BlueZ
     Task<IDisposable> WatchPropertiesAsync(Action<PropertyChanges> handler);
   }
 
+  [DBusInterface("org.bluez.LEAdvertisement1")]
+  public interface ILEAdvertisement1 : IDBusObject
+  {
+    Task ReleaseAsync();
+    Task<T> GetAsync<T>(string prop);
+    Task<LEAdvertisement1Properties> GetAllAsync();
+    Task SetAsync(string prop, object val);
+    Task<IDisposable> WatchPropertiesAsync(Action<PropertyChanges> handler);
+  }
+
+  [Dictionary]
+  public class LEAdvertisement1Properties
+  {
+    private string _Type = default(string);
+    public string Type
+    {
+      get
+      {
+        return _Type;
+      }
+
+      set
+      {
+        _Type = (value);
+      }
+    }
+
+    private string[] _ServiceUUIDs = default(string[]);
+    public string[] ServiceUUIDs
+    {
+      get
+      {
+        return _ServiceUUIDs;
+      }
+
+      set
+      {
+        _ServiceUUIDs = (value);
+      }
+    }
+
+    private IDictionary<string, object> _ManufacturerData = default(IDictionary<string, object>);
+    public IDictionary<string, object> ManufacturerData
+    {
+      get
+      {
+        return _ManufacturerData;
+      }
+
+      set
+      {
+        _ManufacturerData = (value);
+      }
+    }
+
+    private string[] _SolicitUUIDs = default(string[]);
+    public string[] SolicitUUIDs
+    {
+      get
+      {
+        return _SolicitUUIDs;
+      }
+
+      set
+      {
+        _SolicitUUIDs = (value);
+      }
+    }
+
+    private IDictionary<string, object> _ServiceData = default(IDictionary<string, object>);
+    public IDictionary<string, object> ServiceData
+    {
+      get
+      {
+        return _ServiceData;
+      }
+
+      set
+      {
+        _ServiceData = (value);
+      }
+    }
+
+    private bool _IncludeTxPower = default(bool);
+    public bool IncludeTxPower
+    {
+      get
+      {
+        return _IncludeTxPower;
+      }
+
+      set
+      {
+        _IncludeTxPower = (value);
+      }
+    }
+  }
+
+  static class LEAdvertisement1Extensions
+  {
+    public static Task<string> GetTypeAsync(this ILEAdvertisement1 o) => o.GetAsync<string>("Type");
+    public static Task<string[]> GetServiceUUIDsAsync(this ILEAdvertisement1 o) => o.GetAsync<string[]>("ServiceUUIDs");
+    public static Task<IDictionary<string, object>> GetManufacturerDataAsync(this ILEAdvertisement1 o) => o.GetAsync<IDictionary<string, object>>("ManufacturerData");
+    public static Task<string[]> GetSolicitUUIDsAsync(this ILEAdvertisement1 o) => o.GetAsync<string[]>("SolicitUUIDs");
+    public static Task<IDictionary<string, object>> GetServiceDataAsync(this ILEAdvertisement1 o) => o.GetAsync<IDictionary<string, object>>("ServiceData");
+    public static Task<bool> GetIncludeTxPowerAsync(this ILEAdvertisement1 o) => o.GetAsync<bool>("IncludeTxPower");
+  }
+
   [Dictionary]
   public class MediaControl1Properties
   {
